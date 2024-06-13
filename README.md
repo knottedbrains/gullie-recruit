@@ -1,3 +1,6 @@
+# Relocation exclusive job board for building pipeline for Gullie
+includes a job board with gemini integration + job scraper for relocation only opportunities
+
 
 # Getting Started with Create React App
 
