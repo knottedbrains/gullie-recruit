@@ -6,8 +6,14 @@ const JobList = () => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const jobsCollection = await db.collection('jobs').get();
-      setJobs(jobsCollection.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      try {
+        const jobCollection = db.collection('jobs');
+        const jobSnapshot = await jobCollection.get();
+        const jobList = jobSnapshot.docs.map(doc => doc.data());
+        setJobs(jobList);
+      } catch (error) {
+        console.error("Error fetching jobs: ", error);
+      }
     };
 
     fetchJobs();
@@ -15,14 +21,10 @@ const JobList = () => {
 
   return (
     <div>
-      <h2>Job Listings</h2>
+      <h1>Job Listings</h1>
       <ul>
-        {jobs.map(job => (
-          <li key={job.id}>
-            <a href={job.url} target="_blank" rel="noopener noreferrer">
-              {job.title}
-            </a>
-          </li>
+        {jobs.map((job, index) => (
+          <li key={index}>{job.title}</li>
         ))}
       </ul>
     </div>

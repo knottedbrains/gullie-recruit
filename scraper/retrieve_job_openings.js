@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const { scrapeJobOpenings, saveJobToFirestore } = require('./job_scraper');
 
 const retrieveGoogleURLSforSearchTerm = async (searchTerm) => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: 'new' });
   const page = await browser.newPage();
   const query = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
   await page.goto(query, { waitUntil: 'networkidle2' });
