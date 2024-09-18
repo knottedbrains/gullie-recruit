@@ -1,49 +1,54 @@
 // src/pages/Home.js
-
-import React from 'react';
+import React, { useState } from 'react';
 import JobList from '../components/JobList';
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
-import Input from '../components/ui/Input';
+import SearchInput from '../components/inputs/SearchInput'; // Import SearchInput
+import LinkedInInput from '../components/inputs/LinkedInInput'; // Import LinkedInInput
+import EmailInput from '../components/inputs/EmailInput'; // Import EmailInput
 import { SearchIcon, BriefcaseIcon, HomeIcon, ArrowRightIcon } from '../components/icons';
 
-// Remove the unused imports
-// import { MapPinIcon, PlaneIcon } from '../components/icons';
 
-const Home = () => (
-  <div className="flex flex-col min-h-screen">
-    <header className="w-full bg-white py-4 shadow-sm">
-      {/* Your header content */}
-    </header>
-    <section className="w-full py-8 md:py-12 lg:py-16 xl:py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-6 items-center">
-        <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-[#EF753E]">
-            Move to your dream city with Gullie
-          </h1>
-          <p className="max-w-[600px] text-lg text-gray-500">
-            Discover the world's most ambitious and relocation-friendly companies. Take your career to the next level (and the next city!)
-          </p>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <Input type="search" placeholder="Search jobs" className="border-gray-300 text-gray-900" />
-            <Input type="url" placeholder="LinkedIn URL" className="border-gray-300 text-gray-900" />
-            <Input type="email" placeholder="Email" className="border-gray-300 text-gray-900" />
-            <Button className="px-6 py-2 rounded-md bg-[#EF753E] text-white hover:bg-[#e66a37]">Search</Button>
-          </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            By submitting your information, you agree to receive job opportunities and updates from Gullie. Your
-            profile will be screened and assessed to ensure it is a good fit before we recommend any jobs. Your data
-            will be used in accordance with our{" "}
-            <Link to="#" className="underline">
-              Privacy Policy
-            </Link>
-            .
-          </p>
-        </div>
-        <img src="/hero.png" width={400} height={400} alt="Hero" className="mx-auto rounded-lg shadow-lg" />
-      </div>
-    </section>
+const Home = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [linkedinValue, setLinkedInValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
 
+  return (
+      <div className="flex flex-col min-h-screen">
+          <header className="w-full bg-white py-4 shadow-sm">
+              {/* Your header content */}
+          </header>
+          <section className="w-full py-8 md:py-12 lg:py-16 xl:py-20 bg-white">
+              <div className="container mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-6 items-center">
+                  <div className="space-y-4">
+                      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-[#EF753E]">
+                          Move to your dream city with Gullie
+                      </h1>
+                      <p className="max-w-[600px] text-lg text-gray-500">
+                          Discover the world's most ambitious and relocation-friendly companies. Take your career to the next level (and the next city!)
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-2">
+                          <SearchInput value={searchValue} onChange={setSearchValue} className="flex-1" />
+                          <LinkedInInput value={linkedinValue} onChange={setLinkedInValue} className="flex-1" />
+                          <EmailInput value={emailValue} onChange={setEmailValue} className="flex-1" />
+                          <Button className="px-6 py-2 rounded-md bg-[#EF753E] text-white hover:bg-[#e66a37] h-full">
+                              Search
+                          </Button>
+                      </div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                          By submitting your information, you agree to receive job opportunities and updates from Gullie. Your
+                          profile will be screened and assessed to ensure it is a good fit before we recommend any jobs. Your data
+                          will be used in accordance with our{" "}
+                          <Link to="#" className="underline">
+                              Privacy Policy
+                          </Link>
+                          .
+                      </p>
+                  </div>
+                  <img src="/hero.png" width={400} height={400} alt="Hero" className="mx-auto rounded-lg shadow-lg" />
+              </div>
+          </section>
     <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="space-y-4 mb-6">
@@ -142,5 +147,5 @@ const Home = () => (
     </section>
   </div>
 );
-
+}
 export default Home;

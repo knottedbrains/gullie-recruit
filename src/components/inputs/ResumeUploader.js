@@ -11,7 +11,7 @@ const ResumeUploader = ({ onUpload }) => {
                 type="file"
                 id="resume"
                 onChange={(e) => onUpload(e.target.files[0])}
-                className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-[#EF753E] focus:border-[#EF753E] sm:text-sm"
+                className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#EF753E] focus:border-[#EF753E] sm:text-sm"
             />
         </div>
     );
